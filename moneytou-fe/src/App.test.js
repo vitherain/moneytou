@@ -2,8 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+it('renders side menu and main body', () => {
+  const renderResult = render(<App />);
+  expect(renderResult.container.querySelector('div#side-menu')).toBeInTheDocument();
+  expect(renderResult.container.querySelector('div#screen-content')).toBeInTheDocument();
 });
