@@ -1,19 +1,24 @@
-div {
-  .app {
-    display: flex;
-    min-height: 100%;
-    flex-flow: row nowrap;
+.app {
+  display: flex;
+  min-height: 100%;
+  flex-flow: row nowrap;
+
+  &--light {
+    background-color: #ffffff;
   }
 
-  #side-menu {
+  &--dark {
+    background-color: #1E2125;
+    color: rgb(218, 221, 225);
+  }
+
+  .side-nav {
     flex: 0 1 30%;
     min-height: 100%;
-    background-color: antiquewhite;
   }
 
-  #screen-content {
+  .screen-content {
     flex: 0 1 70%;
     min-height: 100%;
-    background-color: burlywood;
   }
 }

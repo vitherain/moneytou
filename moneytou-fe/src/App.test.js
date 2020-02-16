@@ -8,9 +8,9 @@ describe('<App /> spec', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('renders side menu and main body', () => {
+  it('renders side nav and main body', () => {
     const { container } = render(<App />);
-    expect(container.querySelector('div#side-menu')).toBeInTheDocument();
-    expect(container.querySelector('div#screen-content')).toBeInTheDocument();
+    expect(container.querySelector('.app .side-nav')).toBeInTheDocument();
+    expect(container.querySelector('.app .screen-content')).toBeInTheDocument();
   });
 });
