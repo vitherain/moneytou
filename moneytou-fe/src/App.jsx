@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
-import SideNav from './core/components/SideNav';
-import ScreenContent from './core/components/ScreenContent';
+import SideNav from './common/components/SideNav';
+import ScreenContent from './common/components/ScreenContent';
 
 function App() {
   const theme = 'light';
