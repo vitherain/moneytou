@@ -1,1 +1,7 @@
-
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5436/moneytou
+    username: moneytou_dba
+    password: moneytou
+  jpa:
+    database: postgresql

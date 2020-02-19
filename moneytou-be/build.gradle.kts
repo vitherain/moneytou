@@ -25,6 +25,9 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.postgresql:postgresql:42.2.10")
+    implementation("com.graphql-java:graphql-spring-boot-starter:5.0.2")
+    implementation("com.graphql-java:graphql-java-tools:5.2.4")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
