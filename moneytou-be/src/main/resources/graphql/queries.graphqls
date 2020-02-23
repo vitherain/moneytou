@@ -9,10 +9,61 @@ scalar LocalTime
 # java.time.OffsetDateTime implementation
 scalar OffsetDateTime
 
+type Account {
+    id: ID
+    name: String!
+}
+
 enum Currency {
     CZK
     EUR
     USD
+}
+
+type Money {
+    value: Float!
+    currency: Currency!
+}
+
+type Label {
+    name: String!
+}
+
+type TransactionCategory {
+    id: ID
+    name: String!
+    icon: String!
+    childCategories: [TransactionCategory]!
+}
+
+interface Transaction {
+    id: ID
+    amount: Money!
+    date: OffsetDateTime!
+    category: TransactionCategory!
+    labels: [Label]!
+    account: Account!
+    note: String
+}
+
+type Expense implements Transaction {
+    id: ID
+    amount: Money!
+    date: OffsetDateTime!
+    category: TransactionCategory!
+    labels: [Label]!
+    account: Account!
+    note: String
+}
+
+type Income implements Transaction {
+    id: ID
+    amount: Money!
+    date: OffsetDateTime!
+    category: TransactionCategory!
+    labels: [Label]!
+    account: Account!
+    note: String
 }
 
 type Post {
