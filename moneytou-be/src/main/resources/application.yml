@@ -5,3 +5,12 @@ spring:
     password: moneytou
   jpa:
     database: postgresql
+
+graphql:
+  servlet:
+    mapping: /graphql
+    enabled: true
+    corsEnabled: true
+  datetime:
+    scalars:
+      zone-conversion-enabled: true
