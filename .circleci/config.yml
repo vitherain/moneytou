@@ -1,6 +1,8 @@
 version: 2.1
 jobs:
   build_be:
+    working_directory: ~/repo/moneytou-be
+
     docker:
       - image: circleci/openjdk:8-jdk
 
