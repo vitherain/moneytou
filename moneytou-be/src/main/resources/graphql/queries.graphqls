@@ -9,6 +9,12 @@ scalar LocalTime
 # java.time.OffsetDateTime implementation
 scalar OffsetDateTime
 
+enum Currency {
+    CZK
+    EUR
+    USD
+}
+
 type Post {
     id: ID!
     title: String!
