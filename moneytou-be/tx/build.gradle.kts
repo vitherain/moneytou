@@ -1,19 +1,10 @@
-allprojects {
-    repositories {
-        mavenCentral()
-    }
-}
-
-allprojects {
-    version = "0.0.1-SNAPSHOT"
-    group = "io.herain"
-}
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("io.spring.dependency-management") version "1.0.9.RELEASE"
+    id("io.spring.dependency-management")
     id("idea")
-    kotlin("jvm") version "1.3.61"
-    kotlin("plugin.spring") version "1.3.61"
+    kotlin("jvm")
+    id("groovy")
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_11
@@ -42,4 +33,22 @@ dependencies {
     }
     testImplementation("org.spockframework:spock-core:2.0-M2-groovy-2.5")
     testImplementation("info.solidsoft.spock:spock-global-unroll:0.5.1")
+}
+
+tasks.withType<Test> {
+    filter {
+        includeTestsMatching("*Test*")
+        includeTestsMatching("*Spec.groovy*")
+    }
+    useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions {
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+        jvmTarget = "1.8"
+    }
 }
