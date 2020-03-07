@@ -10,7 +10,7 @@ scalar LocalTime
 scalar OffsetDateTime
 
 type Account {
-    id: ID
+    id: ID!
     name: String!
 }
 
@@ -29,64 +29,97 @@ type Label {
     name: String!
 }
 
-type TransactionCategory {
-    id: ID
+type TxCategory {
+    id: ID!
     name: String!
     icon: String!
-    childCategories: [TransactionCategory]!
+    childCategories: [TxCategory]!
 }
 
-interface Transaction {
-    id: ID
-    amount: Money!
-    date: OffsetDateTime!
-    category: TransactionCategory!
-    labels: [Label]!
-    account: Account!
-    note: String
-}
-
-type Expense implements Transaction {
-    id: ID
-    amount: Money!
-    date: OffsetDateTime!
-    category: TransactionCategory!
-    labels: [Label]!
-    account: Account!
-    note: String
-}
-
-type Income implements Transaction {
-    id: ID
-    amount: Money!
-    date: OffsetDateTime!
-    category: TransactionCategory!
-    labels: [Label]!
-    account: Account!
-    note: String
-}
-
-type Post {
+interface Tx {
     id: ID!
-    title: String!
-    text: String!
-    category: String
-    author: Author
+    amount: Money!
+    date: OffsetDateTime!
+    category: TxCategory!
+    labels: [Label]!
+    account: Account!
+    note: String
 }
 
-type Author {
+type Expense implements Tx {
     id: ID!
-    name: String!
-    thumbnail: String
-    posts: [Post]!
+    amount: Money!
+    date: OffsetDateTime!
+    category: TxCategory!
+    labels: [Label]!
+    account: Account!
+    note: String
 }
 
-# The Root Query for the application
+type Income implements Tx {
+    id: ID!
+    amount: Money!
+    date: OffsetDateTime!
+    category: TxCategory!
+    labels: [Label]!
+    account: Account!
+    note: String
+}
+
+type Transfer {
+    id: ID!
+    expensePart: Expense!
+    incomePart: Income!
+}
+
 type Query {
-    recentPosts(count: Int, offset: Int): [Post]!
 }
 
-# The Root Mutation for the application
+input MoneyInput {
+    value: Float!
+    currency: Currency!
+}
+
+input ExpenseInput {
+    id: ID
+    amount: MoneyInput!
+    date: OffsetDateTime!
+    categoryId: ID!
+    labels: [LabelInput]!
+    accountId: ID!
+    note: String
+}
+
+input IncomeInput {
+    id: ID
+    amount: MoneyInput!
+    date: OffsetDateTime!
+    categoryId: ID!
+    labels: [LabelInput]!
+    accountId: ID!
+    note: String
+}
+
+input TransferInput {
+    sourceAccountId: ID!
+    targetAccountId: ID!
+    amount: MoneyInput!
+    date: OffsetDateTime!
+    labels: [LabelInput]!
+    note: String
+}
+
+input LabelInput {
+    name: String!
+}
+
 type Mutation {
-    writePost(title: String!, text: String!, category: String, author: String!) : Post!
+    saveExpense(expense: ExpenseInput!): Expense!
+    saveIncome(income: IncomeInput!): Income!
+    saveTransfer(transfer: TransferInput!): Transfer!
+}
+
+schema {
+    query: Query
+    mutation: Mutation
 }
