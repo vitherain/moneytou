@@ -1,4 +1,4 @@
-package io.herain.moneytou.app.graphql.inputs
+package graphql.input
 
 import io.herain.moneytou.app.domain.Currency
 import java.math.BigDecimal

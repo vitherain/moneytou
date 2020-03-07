@@ -1,15 +1,21 @@
-package io.herain.moneytou.app.graphql.type
+package graphql
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver
+import graphql.input.ExpenseInput
+import graphql.input.IncomeInput
+import graphql.input.TransferInput
 import io.herain.moneytou.app.domain.Currency
-import io.herain.moneytou.app.graphql.inputs.ExpenseInput
-import io.herain.moneytou.app.graphql.inputs.IncomeInput
-import io.herain.moneytou.app.graphql.inputs.TransferInput
+import io.herain.moneytou.app.graphql.type.Account
+import io.herain.moneytou.app.graphql.type.Expense
+import io.herain.moneytou.app.graphql.type.Income
+import io.herain.moneytou.app.graphql.type.Money
+import io.herain.moneytou.app.graphql.type.Transfer
+import io.herain.moneytou.app.graphql.type.TxCategory
 import java.math.BigDecimal
 import java.time.OffsetDateTime
 import java.util.*
 
-class Mutation() : GraphQLMutationResolver {
+class Mutation : GraphQLMutationResolver {
 
     fun saveExpense(expense: ExpenseInput): Expense {
         return Expense(

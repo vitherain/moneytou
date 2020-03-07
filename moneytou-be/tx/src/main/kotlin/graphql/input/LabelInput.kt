@@ -1,4 +1,4 @@
-package io.herain.moneytou.app.graphql.inputs
+package graphql.input
 
 data class LabelInput(
     val name: String

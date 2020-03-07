@@ -1,4 +1,4 @@
-package io.herain.moneytou.app.graphql
+package graphql
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver
 

@@ -1,7 +1,7 @@
 package io.herain.moneytou.app.config
 
-import io.herain.moneytou.app.graphql.Query
-import io.herain.moneytou.app.graphql.type.Mutation
+import graphql.Mutation
+import graphql.Query
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 

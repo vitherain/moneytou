@@ -1,9 +1,9 @@
-package io.herain.moneytou.app.graphql.inputs
+package graphql.input
 
 import java.time.OffsetDateTime
 import java.util.*
 
-data class IncomeInput(
+data class ExpenseInput(
     val id: UUID?,
     val amount: MoneyInput,
     val date: OffsetDateTime,
