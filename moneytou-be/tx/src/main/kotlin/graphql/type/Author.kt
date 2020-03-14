@@ -1,4 +1,4 @@
-package io.herain.moneytou.app.graphql.type
+package io.herain.moneytou.tx.graphql.type
 
 class Author {
     var id: String? = null

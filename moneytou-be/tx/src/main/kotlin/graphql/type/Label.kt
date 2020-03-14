@@ -1,3 +1,3 @@
-package io.herain.moneytou.app.graphql.type
+package io.herain.moneytou.tx.graphql.type
 
 data class Label(val name: String)

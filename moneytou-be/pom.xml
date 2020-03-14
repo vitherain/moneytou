@@ -18,6 +18,7 @@
     <modules>
         <module>app</module>
         <module>tx</module>
+        <module>common</module>
     </modules>
 
     <properties>
@@ -56,6 +57,10 @@
     </dependencyManagement>
 
     <repositories>
+        <repository>
+            <id>maven2</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
         <repository>
             <id>jcenter</id>
             <url>https://bintray.com/bintray/jcenter</url>

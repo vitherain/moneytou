@@ -1,6 +1,6 @@
-package io.herain.moneytou.app.graphql.type
+package io.herain.moneytou.tx.graphql.type
 
-import java.util.*
+import java.util.UUID
 
 data class Account(
         val id: UUID,

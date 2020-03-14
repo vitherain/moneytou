@@ -114,6 +114,9 @@ input LabelInput {
 }
 
 type Mutation {
+}
+
+extend type Mutation {
     saveExpense(expense: ExpenseInput!): Expense!
     saveIncome(income: IncomeInput!): Income!
     saveTransfer(transfer: TransferInput!): Transfer!

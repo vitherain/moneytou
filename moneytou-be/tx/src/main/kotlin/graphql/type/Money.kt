@@ -1,6 +1,6 @@
-package io.herain.moneytou.app.graphql.type
+package io.herain.moneytou.tx.graphql.type
 
-import io.herain.moneytou.app.domain.Currency
+import io.herain.moneytou.common.domain.Currency
 import java.math.BigDecimal
 
 data class Money(

@@ -5,6 +5,20 @@ spring:
     password: moneytou
   jpa:
     database: postgresql
+    open-in-view: false
+  flyway:
+    locations: classpath:db/migration
+    enabled: true
+    schemas: moneytou
+    out-of-order: true
+    check-location: false
+    url: ${spring.datasource.url}
+    password: ${spring.datasource.password}
+    user: ${spring.datasource.username}
+  application:
+    admin:
+      jmx-name: org.springframework.boot:type=Admin,name=MoneytouApplication
+
 
 graphql:
   servlet:

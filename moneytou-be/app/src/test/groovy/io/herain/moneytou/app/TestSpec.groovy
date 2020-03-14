@@ -1,4 +1,4 @@
-package io.herain.moneytou.app.test
+package io.herain.moneytou.app
 
 import spock.lang.Specification
 

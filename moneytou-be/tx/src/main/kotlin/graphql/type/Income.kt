@@ -1,7 +1,7 @@
-package io.herain.moneytou.app.graphql.type
+package io.herain.moneytou.tx.graphql.type
 
 import java.time.OffsetDateTime
-import java.util.*
+import java.util.UUID
 
 data class Income(
     override val id: UUID,
