@@ -1,11 +1,7 @@
 package io.herain.moneytou.tx.domain
 
-import io.herain.moneytou.tx.graphql.type.Label
-import io.herain.moneytou.tx.graphql.type.TxCategory
 import java.time.OffsetDateTime
 import java.util.UUID
-import javax.persistence.AttributeOverride
-import javax.persistence.AttributeOverrides
 import javax.persistence.CollectionTable
 import javax.persistence.Column
 import javax.persistence.ElementCollection
@@ -30,13 +26,13 @@ data class Income(
     val amount: NegativeMoney,
     @Column(name = "date", nullable = false)
     val date: OffsetDateTime,
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "category_id", nullable = false)
-    val category: TxCategory,
+    @Column(name = "category_id", nullable = false)
+    val categoryId: UUID,
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "tx_label", joinColumns = [JoinColumn(name = "tx_id")])
-    @AttributeOverrides(
-        AttributeOverride(name = "name", column = Column(name = "name"))
+    @CollectionTable(
+        name = "tx_label",
+        schema = "moneytou",
+        joinColumns = [JoinColumn(name = "tx_id")]
     )
     val labels: Set<Label>,
     @ManyToOne(optional = false)
