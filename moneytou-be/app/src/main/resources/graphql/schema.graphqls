@@ -36,40 +36,19 @@ type TxCategory {
     childCategories: [TxCategory]!
 }
 
-interface Tx {
+type Tx {
     id: ID!
     amount: Money!
     date: OffsetDateTime!
-    category: TxCategory!
-    labels: [Label]!
-    account: Account!
-    note: String
-}
-
-type Expense implements Tx {
-    id: ID!
-    amount: Money!
-    date: OffsetDateTime!
-    category: TxCategory!
-    labels: [Label]!
-    account: Account!
-    note: String
-}
-
-type Income implements Tx {
-    id: ID!
-    amount: Money!
-    date: OffsetDateTime!
-    category: TxCategory!
+    category: ID!
     labels: [Label]!
     account: Account!
     note: String
 }
 
 type Transfer {
-    id: ID!
-    expensePart: Expense!
-    incomePart: Income!
+    expensePartId: ID!
+    incomePartId: ID!
 }
 
 type Query {
@@ -80,17 +59,7 @@ input MoneyInput {
     currency: Currency!
 }
 
-input ExpenseInput {
-    id: ID
-    amount: MoneyInput!
-    date: OffsetDateTime!
-    categoryId: ID!
-    labels: [LabelInput]!
-    accountId: ID!
-    note: String
-}
-
-input IncomeInput {
+input TxInput {
     id: ID
     amount: MoneyInput!
     date: OffsetDateTime!
@@ -117,8 +86,7 @@ type Mutation {
 }
 
 extend type Mutation {
-    saveExpense(expense: ExpenseInput!): Expense!
-    saveIncome(income: IncomeInput!): Income!
+    saveTx(tx: TxInput!): Tx!
     saveTransfer(transfer: TransferInput!): Transfer!
 }
 

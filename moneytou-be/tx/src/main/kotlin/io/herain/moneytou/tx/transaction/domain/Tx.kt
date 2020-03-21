@@ -18,20 +18,20 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "transaction", schema = "moneytou")
-data class Expense(
+data class Tx(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     val id: UUID,
     @Embedded
-    val amount: PositiveMoney,
+    val amount: Money,
     @Column(name = "date", nullable = false)
     val date: OffsetDateTime,
     @Column(name = "category_id", nullable = false)
     val categoryId: UUID,
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(
-        name = "tx_label",
+        name = "transaction_label",
         schema = "moneytou",
         joinColumns = [JoinColumn(name = "tx_id")]
     )

@@ -7,7 +7,7 @@ import javax.persistence.EnumType
 import javax.persistence.Enumerated
 
 @Embeddable
-data class NegativeMoney(
+data class Money(
     @Column(name = "amount", nullable = false)
     val value: BigDecimal,
     @Column(name = "currency", nullable = false)
@@ -15,8 +15,8 @@ data class NegativeMoney(
     val currency: Currency
 ) {
     init {
-        if (value.signum() != -1) {
-            throw IllegalArgumentException("amount=${value} must be a negative number")
+        if (value.signum() == 0) {
+            throw IllegalArgumentException("amount can not be zero")
         }
     }
 }

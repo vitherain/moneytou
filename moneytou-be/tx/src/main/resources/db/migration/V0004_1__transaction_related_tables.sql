@@ -13,11 +13,11 @@ CREATE TABLE moneytou.transaction(
     CONSTRAINT chck_currency CHECK (currency IN ('CZK', 'EUR', 'USD'))
 );
 
-CREATE TABLE moneytou.tx_label(
+CREATE TABLE moneytou.transaction_label(
     tx_id UUID NOT NULL,
     name VARCHAR(40) NOT NULL,
 
-    CONSTRAINT tx_label_pkey PRIMARY KEY (tx_id, name),
-    CONSTRAINT fk_tx_label__transaction FOREIGN KEY (tx_id)
+    CONSTRAINT transaction_label_pkey PRIMARY KEY (tx_id, name),
+    CONSTRAINT fk_transaction_label__transaction FOREIGN KEY (tx_id)
         REFERENCES moneytou.transaction(id)
 );
