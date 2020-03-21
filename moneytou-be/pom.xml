@@ -10,7 +10,7 @@
     </parent>
     <groupId>io.herain</groupId>
     <artifactId>moneytou</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${project.version}</version>
     <name>Moneytou</name>
     <description>This is the best personal financial management app in the world!</description>
     <packaging>pom</packaging>
@@ -19,9 +19,11 @@
         <module>app</module>
         <module>tx</module>
         <module>common</module>
+        <module>moneytou-test</module>
     </modules>
 
     <properties>
+        <project.version>0.0.1-SNAPSHOT</project.version>
         <java.version>1.8</java.version>
         <kotlin.version>1.3.61</kotlin.version>
         <graphql-spring-boot-starter.version>6.0.1</graphql-spring-boot-starter.version>
@@ -29,6 +31,7 @@
         <groovy-all.version>2.5.9</groovy-all.version>
         <spock-core.version>2.0-M2-groovy-2.5</spock-core.version>
         <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
+        <embedded-database-spring-test.version>1.5.3</embedded-database-spring-test.version>
     </properties>
 
     <dependencyManagement>
@@ -52,6 +55,11 @@
                 <groupId>org.spockframework</groupId>
                 <artifactId>spock-core</artifactId>
                 <version>${spock-core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.zonky.test</groupId>
+                <artifactId>embedded-database-spring-test</artifactId>
+                <version>${embedded-database-spring-test.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

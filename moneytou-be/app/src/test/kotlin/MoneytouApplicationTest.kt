@@ -1,10 +1,9 @@
 package io.herain.moneytou.app
 
+import io.herain.moneytou.test.BaseIntegrationTest
 import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class MoneytouApplicationTest {
+class MoneytouApplicationTest : BaseIntegrationTest() {
 
     @Test
     fun contextLoads() {
