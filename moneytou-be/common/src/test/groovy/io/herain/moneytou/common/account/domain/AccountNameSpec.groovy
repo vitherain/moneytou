@@ -1,5 +1,6 @@
-package io.herain.moneytou.tx.domain
+package io.herain.moneytou.common.account.domain
 
+import io.herain.moneytou.common.account.domain.Account
 import spock.lang.Specification
 
 class AccountNameSpec extends Specification {

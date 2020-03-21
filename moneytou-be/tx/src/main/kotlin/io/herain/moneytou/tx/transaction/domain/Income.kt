@@ -1,6 +1,6 @@
 package io.herain.moneytou.tx.transaction.domain
 
-import io.herain.moneytou.tx.domain.Account
+import io.herain.moneytou.common.account.domain.Account
 import java.time.OffsetDateTime
 import java.util.UUID
 import javax.persistence.CollectionTable

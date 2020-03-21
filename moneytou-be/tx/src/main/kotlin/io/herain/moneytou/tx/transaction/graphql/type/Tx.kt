@@ -1,7 +1,7 @@
 package io.herain.moneytou.tx.transaction.graphql.type
 
-import io.herain.moneytou.tx.graphql.type.Account
-import io.herain.moneytou.tx.graphql.type.TxCategory
+import io.herain.moneytou.common.account.graphql.type.Account
+import io.herain.moneytou.common.category.graphql.type.TxCategory
 import io.herain.moneytou.tx.transaction.domain.PositiveMoney
 import java.time.OffsetDateTime
 import java.util.UUID

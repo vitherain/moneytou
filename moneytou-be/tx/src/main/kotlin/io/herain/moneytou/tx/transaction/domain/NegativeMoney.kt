@@ -1,6 +1,5 @@
 package io.herain.moneytou.tx.transaction.domain
 
-import io.herain.moneytou.common.domain.Currency
 import java.math.BigDecimal
 import javax.persistence.Column
 import javax.persistence.Embeddable

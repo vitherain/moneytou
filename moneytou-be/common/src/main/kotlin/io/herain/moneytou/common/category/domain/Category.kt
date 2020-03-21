@@ -1,4 +1,4 @@
-package io.herain.moneytou.tx.domain
+package io.herain.moneytou.common.category.domain
 
 import java.util.UUID
 import javax.persistence.CascadeType

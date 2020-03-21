@@ -1,7 +1,6 @@
 package io.herain.moneytou.tx.transaction.domain
 
-import io.herain.moneytou.common.domain.Currency
-import io.herain.moneytou.tx.transaction.domain.NegativeMoney
+
 import spock.lang.Specification
 
 class NegativeMoneySpec extends Specification {

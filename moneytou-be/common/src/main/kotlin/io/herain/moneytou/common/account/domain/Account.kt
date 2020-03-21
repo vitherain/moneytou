@@ -1,4 +1,4 @@
-package io.herain.moneytou.tx.domain
+package io.herain.moneytou.common.account.domain
 
 import java.util.UUID
 import javax.persistence.Column

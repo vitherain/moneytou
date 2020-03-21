@@ -1,5 +1,6 @@
-package io.herain.moneytou.tx.domain
+package io.herain.moneytou.common.category.domain
 
+import io.herain.moneytou.common.category.domain.Category
 import spock.lang.Specification
 
 class CategoryNameSpec extends Specification {

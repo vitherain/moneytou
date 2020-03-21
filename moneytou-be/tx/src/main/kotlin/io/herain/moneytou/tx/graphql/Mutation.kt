@@ -1,9 +1,9 @@
 package io.herain.moneytou.tx.graphql
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver
-import io.herain.moneytou.common.domain.Currency
-import io.herain.moneytou.tx.graphql.type.Account
-import io.herain.moneytou.tx.graphql.type.TxCategory
+import io.herain.moneytou.common.account.graphql.type.Account
+import io.herain.moneytou.common.category.graphql.type.TxCategory
+import io.herain.moneytou.tx.transaction.domain.Currency
 import io.herain.moneytou.tx.transaction.domain.PositiveMoney
 import io.herain.moneytou.tx.transaction.graphql.input.ExpenseInput
 import io.herain.moneytou.tx.transaction.graphql.input.IncomeInput
