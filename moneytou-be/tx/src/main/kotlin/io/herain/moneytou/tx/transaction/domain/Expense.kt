@@ -1,5 +1,6 @@
-package io.herain.moneytou.tx.domain
+package io.herain.moneytou.tx.transaction.domain
 
+import io.herain.moneytou.tx.domain.Account
 import java.time.OffsetDateTime
 import java.util.UUID
 import javax.persistence.CollectionTable
@@ -17,13 +18,13 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "transaction", schema = "moneytou")
-data class Income(
+data class Expense(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     val id: UUID,
     @Embedded
-    val amount: NegativeMoney,
+    val amount: PositiveMoney,
     @Column(name = "date", nullable = false)
     val date: OffsetDateTime,
     @Column(name = "category_id", nullable = false)

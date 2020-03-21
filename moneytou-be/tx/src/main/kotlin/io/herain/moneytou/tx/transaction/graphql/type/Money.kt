@@ -1,9 +1,9 @@
-package io.herain.moneytou.tx.graphql.input
+package io.herain.moneytou.tx.transaction.graphql.type
 
 import io.herain.moneytou.common.domain.Currency
 import java.math.BigDecimal
 
-data class MoneyInput(
+data class Money(
     val value: BigDecimal,
     val currency: Currency
 )

@@ -1,4 +1,4 @@
-package io.herain.moneytou.tx.domain
+package io.herain.moneytou.tx.transaction.domain
 
 import javax.persistence.Column
 import javax.persistence.Embeddable

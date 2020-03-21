@@ -1,4 +1,4 @@
-package io.herain.moneytou.tx.domain
+package io.herain.moneytou.tx.transaction.domain
 
 import io.herain.moneytou.common.domain.Currency
 import java.math.BigDecimal
@@ -8,7 +8,7 @@ import javax.persistence.EnumType
 import javax.persistence.Enumerated
 
 @Embeddable
-data class PositiveMoney(
+data class NegativeMoney(
     @Column(name = "amount", nullable = false)
     val value: BigDecimal,
     @Column(name = "currency", nullable = false)
@@ -16,8 +16,8 @@ data class PositiveMoney(
     val currency: Currency
 ) {
     init {
-        if (value.signum() != 1) {
-            throw IllegalArgumentException("amount=${value} must be a positive number")
+        if (value.signum() != -1) {
+            throw IllegalArgumentException("amount=${value} must be a negative number")
         }
     }
 }

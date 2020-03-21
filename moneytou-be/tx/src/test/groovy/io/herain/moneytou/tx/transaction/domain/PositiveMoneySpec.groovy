@@ -1,4 +1,4 @@
-package io.herain.moneytou.tx.domain
+package io.herain.moneytou.tx.transaction.domain
 
 import io.herain.moneytou.common.domain.Currency
 import spock.lang.Specification

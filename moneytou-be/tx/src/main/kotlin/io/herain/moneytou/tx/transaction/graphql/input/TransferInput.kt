@@ -1,4 +1,4 @@
-package io.herain.moneytou.tx.graphql.input
+package io.herain.moneytou.tx.transaction.graphql.input
 
 import java.time.OffsetDateTime
 import java.util.UUID

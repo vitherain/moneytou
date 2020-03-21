@@ -1,4 +1,4 @@
-package io.herain.moneytou.tx.graphql.type
+package io.herain.moneytou.tx.transaction.graphql.type
 
 import java.util.UUID
 
