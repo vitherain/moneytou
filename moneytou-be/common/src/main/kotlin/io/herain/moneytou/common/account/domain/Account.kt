@@ -5,6 +5,8 @@ import javax.persistence.Column
 import javax.persistence.Embeddable
 import javax.persistence.Embedded
 import javax.persistence.Entity
+import javax.persistence.EnumType
+import javax.persistence.Enumerated
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
@@ -19,6 +21,9 @@ data class Account(
     val id: UUID,
     @Embedded
     val name: AccountName,
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    val status: AccountStatus = AccountStatus.ACTIVE,
     @Column(name = "user_id", nullable = false)
     val userId: UUID
 ) {
@@ -32,5 +37,9 @@ data class Account(
                 throw IllegalArgumentException("name='${name}' must be 40 characters long at most")
             }
         }
+    }
+
+    enum class AccountStatus {
+        ACTIVE, INACTIVE
     }
 }

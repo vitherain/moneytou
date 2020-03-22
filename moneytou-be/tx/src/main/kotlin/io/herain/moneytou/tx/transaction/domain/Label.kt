@@ -1,5 +1,6 @@
 package io.herain.moneytou.tx.transaction.domain
 
+import io.herain.moneytou.tx.transaction.graphql.type.Label
 import javax.persistence.Column
 import javax.persistence.Embeddable
 
@@ -12,5 +13,9 @@ data class Label(
         if (name.length > 40) {
             throw IllegalArgumentException("name='${name}' must be 40 characters long at most")
         }
+    }
+
+    fun asDto(): Label {
+        return Label(this.name)
     }
 }

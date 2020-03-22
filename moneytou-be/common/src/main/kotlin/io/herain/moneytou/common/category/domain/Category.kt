@@ -26,6 +26,9 @@ data class Category(
     @Embedded
     val name: CategoryName,
     @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    val status: CategoryStatus = CategoryStatus.ACTIVE,
+    @Enumerated(EnumType.STRING)
     @Column(name = "icon", nullable = false)
     val icon: Icon,
     @OneToMany(cascade = [CascadeType.REMOVE], fetch = FetchType.EAGER)
@@ -52,5 +55,9 @@ data class Category(
         DOLLAR_SIGN("dollar-sign"),
         COINS("coins"),
         CREDIT_CARD("credit-card")
+    }
+
+    enum class CategoryStatus {
+        ACTIVE, INACTIVE
     }
 }

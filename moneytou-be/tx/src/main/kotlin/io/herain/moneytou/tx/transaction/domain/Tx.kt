@@ -1,6 +1,7 @@
 package io.herain.moneytou.tx.transaction.domain
 
 import io.herain.moneytou.common.account.domain.Account
+import io.herain.moneytou.tx.transaction.graphql.type.Tx
 import java.time.OffsetDateTime
 import java.util.UUID
 import javax.persistence.CollectionTable
@@ -41,4 +42,16 @@ data class Tx(
     val account: Account,
     @Column(name = "note", nullable = true)
     val note: String?
-)
+) {
+    fun asDto(): Tx {
+        return Tx(
+            this.id,
+            this.amount.asDto(),
+            this.date,
+            this.categoryId,
+            this.labels.map { it.asDto() }.toSet(),
+            this.account.id,
+            this.note
+        )
+    }
+}

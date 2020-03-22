@@ -40,9 +40,9 @@ type Tx {
     id: ID!
     amount: Money!
     date: OffsetDateTime!
-    category: ID!
+    categoryId: ID!
     labels: [Label]!
-    account: Account!
+    accountId: ID!
     note: String
 }
 
@@ -51,7 +51,16 @@ type Transfer {
     incomePartId: ID!
 }
 
+input PageRequest {
+    page: Int!
+    size: Int!
+}
+
 type Query {
+}
+
+extend type Query {
+    transactions(pageRequest: PageRequest): [Tx]!
 }
 
 input MoneyInput {

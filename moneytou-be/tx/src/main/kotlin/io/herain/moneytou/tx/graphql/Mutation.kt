@@ -1,7 +1,6 @@
 package io.herain.moneytou.tx.graphql
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver
-import io.herain.moneytou.common.account.graphql.type.Account
 import io.herain.moneytou.tx.transaction.domain.Currency
 import io.herain.moneytou.tx.transaction.graphql.input.TransferInput
 import io.herain.moneytou.tx.transaction.graphql.input.TxInput
@@ -20,8 +19,8 @@ class Mutation : GraphQLMutationResolver {
             Money(BigDecimal.valueOf(1234), Currency.CZK),
             OffsetDateTime.now(),
             UUID.randomUUID(),
-            emptyList(),
-            Account(UUID.randomUUID(), "", UUID.randomUUID()),
+            emptySet(),
+            UUID.randomUUID(),
             ""
         )
     }

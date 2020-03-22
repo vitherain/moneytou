@@ -1,5 +1,6 @@
 package io.herain.moneytou.tx.transaction.domain
 
+import io.herain.moneytou.tx.transaction.graphql.type.Money
 import java.math.BigDecimal
 import javax.persistence.Column
 import javax.persistence.Embeddable
@@ -18,5 +19,9 @@ data class Money(
         if (value.signum() == 0) {
             throw IllegalArgumentException("amount can not be zero")
         }
+    }
+
+    fun asDto(): Money {
+        return Money(this.value, this.currency)
     }
 }
