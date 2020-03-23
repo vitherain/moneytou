@@ -3,7 +3,7 @@ package io.herain.moneytou.common.account.domain
 import io.herain.moneytou.common.account.domain.Account
 import spock.lang.Specification
 
-class AccountNameSpec extends Specification {
+class AccountNameTest extends Specification {
 
     def "AccountName can not be created when input is too long"() {
         when:
@@ -11,7 +11,7 @@ class AccountNameSpec extends Specification {
 
         then:
         def e = thrown(IllegalArgumentException)
-        e.message == "name='this text is so long that it is too much for an account name' must be 40 characters long at most"
+        e.message == "name='this textis so long that it is too much for an account name' must be 40 characters long at most"
     }
 
     def "AccountName can be created when input is ok"() {
