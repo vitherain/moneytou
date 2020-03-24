@@ -11,7 +11,7 @@ class AccountNameTest extends Specification {
 
         then:
         def e = thrown(IllegalArgumentException)
-        e.message == "name='this textis so long that it is too much for an account name' must be 40 characters long at most"
+        e.message == "name='this text is so long that it is too much for an account name' must be 40 characters long at most"
     }
 
     def "AccountName can be created when input is ok"() {

@@ -10,6 +10,7 @@
         <relativePath>../</relativePath>
     </parent>
     <artifactId>moneytou-test</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
