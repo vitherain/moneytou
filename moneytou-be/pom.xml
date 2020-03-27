@@ -19,6 +19,7 @@
         <module>app</module>
         <module>tx</module>
         <module>common</module>
+        <module>migrations</module>
         <module>test</module>
     </modules>
 
@@ -28,8 +29,7 @@
         <graphql-spring-boot-starter.version>6.0.1</graphql-spring-boot-starter.version>
         <graphql-datetime-spring-boot-starter.version>1.6.0</graphql-datetime-spring-boot-starter.version>
         <groovy-all.version>2.5.10</groovy-all.version>
-        <spock-core.version>2.0-M2-groovy-2.5</spock-core.version>
-        <spock-spring.version>2.0-M2-groovy-2.5</spock-spring.version>
+        <spock.version>2.0-M2-groovy-2.5</spock.version>
         <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
         <embedded-database-spring-test.version>1.5.3</embedded-database-spring-test.version>
         <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
@@ -46,6 +46,11 @@
             <dependency>
                 <groupId>io.herain</groupId>
                 <artifactId>moneytou-common</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>io.herain</groupId>
+                <artifactId>moneytou-migrations</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
@@ -72,12 +77,12 @@
             <dependency>
                 <groupId>org.spockframework</groupId>
                 <artifactId>spock-core</artifactId>
-                <version>${spock-core.version}</version>
+                <version>${spock.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.spockframework</groupId>
                 <artifactId>spock-spring</artifactId>
-                <version>${spock-spring.version}</version>
+                <version>${spock.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.zonky.test</groupId>

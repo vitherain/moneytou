@@ -1,15 +1,12 @@
 package io.herain.moneytou.common.shared.json
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.autoconfigure.json.JsonTest
 import org.springframework.data.domain.PageRequest
-import org.springframework.test.context.junit.jupiter.SpringExtension
 import spock.lang.Specification
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest
+@JsonTest
 class PageRequestDeserializerTest extends Specification {
 
     @Autowired
