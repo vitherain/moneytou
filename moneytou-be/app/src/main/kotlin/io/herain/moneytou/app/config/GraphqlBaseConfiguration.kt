@@ -3,7 +3,7 @@ package io.herain.moneytou.app.config
 import com.coxautodev.graphql.tools.GraphQLMutationResolver
 import com.coxautodev.graphql.tools.GraphQLQueryResolver
 import io.herain.moneytou.tx.graphql.Mutation
-import io.herain.moneytou.tx.graphql.Query
+import io.herain.moneytou.tx.graphql.TxFetchingQuery
 import io.herain.moneytou.tx.transaction.repository.TxPagingOperations
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -31,7 +31,7 @@ class GraphqlBaseConfiguration {
     }
 
     @Bean
-    fun txQuery(txPagingOperations: TxPagingOperations): Query {
-        return Query(txPagingOperations)
+    fun txFetchingQuery(txPagingOperations: TxPagingOperations): TxFetchingQuery {
+        return TxFetchingQuery(txPagingOperations)
     }
 }
