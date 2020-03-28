@@ -1,20 +1,30 @@
 package io.herain.moneytou.tx.graphql
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver
+import io.herain.moneytou.common.account.repository.AccountCheckOperations
+import io.herain.moneytou.common.shared.exception.MoneytouSecurityException
 import io.herain.moneytou.tx.transaction.domain.Label
 import io.herain.moneytou.tx.transaction.domain.Money
 import io.herain.moneytou.tx.transaction.graphql.input.TxInput
 import io.herain.moneytou.tx.transaction.graphql.type.Tx
-import io.herain.moneytou.tx.transaction.repository.TxFetchingOperations
 import io.herain.moneytou.tx.transaction.repository.TxSavingOperations
+import java.util.UUID
+import java.util.function.Supplier
 import io.herain.moneytou.tx.transaction.domain.Tx as DomainTx
 
 class TxSavingMutation(
-    val fetchingOperations: TxFetchingOperations,
-    val savingOperations: TxSavingOperations
+    private val savingOperations: TxSavingOperations,
+    private val currentUserIdSupplier: Supplier<UUID>,
+    private val accountCheckOperations: AccountCheckOperations
 ) : GraphQLMutationResolver {
 
     fun saveTx(txInput: TxInput): Tx {
+        if (!accountCheckOperations.existsByIdAndUserId(txInput.accountId, currentUserIdSupplier.get())) {
+            throw MoneytouSecurityException(
+                "Account with ID=${txInput.accountId} does not belong to the current user"
+            )
+        }
+
         return if (txInput.id != null) {
             savingOperations.save(
                 DomainTx(

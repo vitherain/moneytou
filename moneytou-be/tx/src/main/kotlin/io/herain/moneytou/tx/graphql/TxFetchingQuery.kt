@@ -7,7 +7,7 @@ import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
 
 class TxFetchingQuery(
-    val txPagingOperations: TxPagingOperations
+    private val txPagingOperations: TxPagingOperations
 ) : GraphQLQueryResolver {
 
     private val defaultPageRequest: PageRequest = PageRequest.of(
