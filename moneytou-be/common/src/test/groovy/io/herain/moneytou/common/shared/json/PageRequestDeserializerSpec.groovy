@@ -7,7 +7,7 @@ import org.springframework.data.domain.PageRequest
 import spock.lang.Specification
 
 @JsonTest
-class PageRequestDeserializerTest extends Specification {
+class PageRequestDeserializerSpec extends Specification {
 
     @Autowired
     ObjectMapper objectMapper

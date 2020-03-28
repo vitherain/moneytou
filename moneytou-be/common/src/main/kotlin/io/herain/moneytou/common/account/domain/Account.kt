@@ -1,5 +1,6 @@
 package io.herain.moneytou.common.account.domain
 
+import io.herain.moneytou.shared.domain.IdentifiedEntity
 import java.util.UUID
 import javax.persistence.Column
 import javax.persistence.Embeddable
@@ -18,7 +19,7 @@ data class Account(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
-    val id: UUID,
+    override val id: UUID,
     @Embedded
     val name: AccountName,
     @Enumerated(EnumType.STRING)
@@ -26,7 +27,7 @@ data class Account(
     val status: AccountStatus = AccountStatus.ACTIVE,
     @Column(name = "user_id", nullable = false)
     val userId: UUID
-) {
+) : IdentifiedEntity {
     @Embeddable
     data class AccountName(
         @Column(name = "name", nullable = false)

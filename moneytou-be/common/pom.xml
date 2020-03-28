@@ -15,6 +15,10 @@
     <dependencies>
         <dependency>
             <groupId>io.herain</groupId>
+            <artifactId>moneytou-shared</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.herain</groupId>
             <artifactId>moneytou-migrations</artifactId>
         </dependency>
 

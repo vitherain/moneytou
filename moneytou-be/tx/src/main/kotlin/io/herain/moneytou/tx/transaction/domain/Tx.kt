@@ -1,6 +1,6 @@
 package io.herain.moneytou.tx.transaction.domain
 
-import io.herain.moneytou.common.account.domain.Account
+import io.herain.moneytou.shared.domain.IdentifiedEntity
 import io.herain.moneytou.tx.transaction.graphql.type.Tx
 import java.time.OffsetDateTime
 import java.util.UUID
@@ -14,7 +14,6 @@ import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.JoinColumn
-import javax.persistence.ManyToOne
 import javax.persistence.Table
 
 @Entity
@@ -23,7 +22,7 @@ data class Tx(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
-    val id: UUID,
+    override val id: UUID = UUID.randomUUID(),
     @Embedded
     val amount: Money,
     @Column(name = "date", nullable = false)
@@ -37,12 +36,11 @@ data class Tx(
         joinColumns = [JoinColumn(name = "tx_id")]
     )
     val labels: Set<Label>,
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "account_id", nullable = false)
-    val account: Account,
+    @Column(name = "account_id", nullable = false)
+    val accountId: UUID,
     @Column(name = "note", nullable = true)
     val note: String?
-) {
+) : IdentifiedEntity {
     fun asDto(): Tx {
         return Tx(
             this.id,
@@ -50,7 +48,7 @@ data class Tx(
             this.date,
             this.categoryId,
             this.labels.map { it.asDto() }.toSet(),
-            this.account.id,
+            this.accountId,
             this.note
         )
     }

@@ -1,5 +1,6 @@
 package io.herain.moneytou.common.user.domain
 
+import io.herain.moneytou.shared.domain.IdentifiedEntity
 import java.util.UUID
 import javax.persistence.CollectionTable
 import javax.persistence.Column
@@ -22,7 +23,7 @@ data class User(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
-    val id: UUID,
+    override val id: UUID,
     @Embedded
     val username: UserName,
     @ElementCollection(fetch = FetchType.EAGER)
@@ -34,7 +35,7 @@ data class User(
     )
     @Column(name = "role")
     val roles: Set<Role>
-) {
+) : IdentifiedEntity {
     @Embeddable
     data class UserName(
         @Column(name = "username", nullable = false)

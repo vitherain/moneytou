@@ -1,5 +1,6 @@
 package io.herain.moneytou.common.category.domain
 
+import io.herain.moneytou.shared.domain.IdentifiedEntity
 import java.util.UUID
 import javax.persistence.CascadeType
 import javax.persistence.Column
@@ -22,7 +23,7 @@ data class Category(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
-    val id: UUID,
+    override val id: UUID,
     @Embedded
     val name: CategoryName,
     @Enumerated(EnumType.STRING)
@@ -34,7 +35,7 @@ data class Category(
     @OneToMany(cascade = [CascadeType.REMOVE], fetch = FetchType.EAGER)
     @JoinColumn(name = "parent_category_id")
     val childCategories: List<Category>
-) {
+) : IdentifiedEntity {
     @Embeddable
     data class CategoryName(
         @Column(name = "name", nullable = false)

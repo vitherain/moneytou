@@ -18,8 +18,9 @@
     <modules>
         <module>app</module>
         <module>tx</module>
-        <module>common</module>
         <module>migrations</module>
+        <module>common</module>
+        <module>shared</module>
         <module>test</module>
     </modules>
 
@@ -56,6 +57,11 @@
             <dependency>
                 <groupId>io.herain</groupId>
                 <artifactId>moneytou-test</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>io.herain</groupId>
+                <artifactId>moneytou-shared</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>

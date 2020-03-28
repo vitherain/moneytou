@@ -15,7 +15,16 @@
     <dependencies>
         <dependency>
             <groupId>io.herain</groupId>
+            <artifactId>moneytou-shared</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.herain</groupId>
             <artifactId>moneytou-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.herain</groupId>
+            <artifactId>moneytou-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
