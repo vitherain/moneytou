@@ -47,11 +47,11 @@ class TxSavingMutationSpec extends Specification {
     void setup() {
         txRepository = new InMemoryTxRepository(existingTxs)
         accountRepository = new InMemoryAccountRepository(existingAccounts)
-        txSavingMutation = new TxSavingMutation(
-                txRepository,
+        txSavingMutation = new TxSavingConfiguration(
                 currentUserIdSupplier,
-                accountRepository
-        )
+                accountRepository,
+                txRepository
+        ).txSavingMutation()
     }
 
     def "new Tx is saved"() {
@@ -98,6 +98,7 @@ class TxSavingMutationSpec extends Specification {
         then:
         def e = thrown(MoneytouSecurityException)
         e.message == "Account with ID=${input.accountId} does not belong to the current user"
+        txRepository.count() == 1
     }
 
     void assertTx(GqlTx tx, TxInput input) {

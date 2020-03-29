@@ -4,9 +4,7 @@ import com.coxautodev.graphql.tools.GraphQLMutationResolver
 import com.coxautodev.graphql.tools.GraphQLQueryResolver
 import io.herain.moneytou.tx.graphql.TransferSavingMutation
 import io.herain.moneytou.tx.graphql.TxFetchingQuery
-import io.herain.moneytou.tx.graphql.TxSavingMutation
 import io.herain.moneytou.tx.transaction.repository.TxPagingOperations
-import io.herain.moneytou.tx.transaction.repository.TxSavingOperations
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -25,11 +23,6 @@ class GraphqlBaseConfiguration {
         return object : GraphQLMutationResolver {
             /* this is to avoid runtime error as root Mutation must exist in app context */
         }
-    }
-
-    @Bean
-    fun txSavingMutation(txSavingOperations: TxSavingOperations): TxSavingMutation {
-        return TxSavingMutation(txSavingOperations)
     }
 
     @Bean
