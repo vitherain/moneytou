@@ -11,8 +11,6 @@ import javax.persistence.Entity
 import javax.persistence.EnumType
 import javax.persistence.Enumerated
 import javax.persistence.FetchType
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.JoinColumn
 import javax.persistence.Table
@@ -21,9 +19,8 @@ import javax.persistence.Table
 @Table(name = "user", schema = "moneytou")
 data class User(
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
-    override val id: UUID,
+    override val id: UUID = UUID.randomUUID(),
     @Embedded
     val username: UserName,
     @ElementCollection(fetch = FetchType.EAGER)

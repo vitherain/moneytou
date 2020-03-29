@@ -10,8 +10,6 @@ import javax.persistence.Entity
 import javax.persistence.EnumType
 import javax.persistence.Enumerated
 import javax.persistence.FetchType
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.JoinColumn
 import javax.persistence.OneToMany
@@ -21,9 +19,8 @@ import javax.persistence.Table
 @Table(name = "category", schema = "moneytou")
 data class Category(
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
-    override val id: UUID,
+    override val id: UUID = UUID.randomUUID(),
     @Embedded
     val name: CategoryName,
     @Enumerated(EnumType.STRING)
