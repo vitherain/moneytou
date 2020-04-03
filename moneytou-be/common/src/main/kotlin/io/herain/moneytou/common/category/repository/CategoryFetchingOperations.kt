@@ -6,6 +6,6 @@ import java.util.UUID
 
 interface CategoryFetchingOperations {
 
-    @Query("SELECT c.id FROM Category c WHERE c.code = ${Category.TRANSFER_CODE}")
+    @Query("SELECT c.id FROM Category c WHERE c.code.code = '${Category.TRANSFER_CODE}'")
     fun findTransferCategoryId(): UUID
 }

@@ -68,7 +68,7 @@ class TxSavingMutationSpec extends Specification {
         then:
         assertTx(output, input)
         txRepository.count() == 2
-        Optional<Tx> savedTx = txRepository.findById(output.id)
+        Tx savedTx = txRepository.findById(output.id)
         assertTx(savedTx, input)
     }
 
@@ -84,7 +84,7 @@ class TxSavingMutationSpec extends Specification {
         then:
         assertTx(output, input)
         txRepository.count() == 1
-        Optional<Tx> savedTx = txRepository.findById(output.id)
+        Tx savedTx = txRepository.findById(output.id)
         assertTx(savedTx, input)
     }
 
@@ -112,13 +112,12 @@ class TxSavingMutationSpec extends Specification {
         assert tx.note == "some other note"
     }
 
-    void assertTx(final Optional<Tx> tx, final TxInput input) {
-        assert tx
-        assert tx.get().amount == new Money(new BigDecimal("12.34"), Currency.EUR)
-        assert tx.get().date == now
-        assert tx.get().categoryId == input.categoryId
-        assert tx.get().labels.containsAll([new Label("label 1")])
-        assert tx.get().accountId == input.accountId
-        assert tx.get().note == "some other note"
+    void assertTx(final Tx tx, final TxInput input) {
+        assert tx.amount == new Money(new BigDecimal("12.34"), Currency.EUR)
+        assert tx.date == now
+        assert tx.categoryId == input.categoryId
+        assert tx.labels.containsAll([new Label("label 1")])
+        assert tx.accountId == input.accountId
+        assert tx.note == "some other note"
     }
 }

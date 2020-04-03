@@ -88,8 +88,8 @@ class TransferSavingMutationSpec extends Specification {
 
         then:
         txRepository.count() == 4
-        Optional<Tx> savedExpense = txRepository.findById(output.expensePartId)
-        Optional<Tx> savedIncome = txRepository.findById(output.incomePartId)
+        Tx savedExpense = txRepository.findById(output.expensePartId)
+        Tx savedIncome = txRepository.findById(output.incomePartId)
         assertExpense(savedExpense)
         assertIncome(savedIncome)
     }
@@ -122,23 +122,21 @@ class TransferSavingMutationSpec extends Specification {
         txRepository.count() == 2
     }
 
-    void assertExpense(final Optional<Tx> expense) {
-        assert expense
-        assert expense.get().amount == new Money(new BigDecimal("-12.34"), Currency.EUR)
-        assert expense.get().date == now
-        assert expense.get().categoryId == transferCategoryId
-        assert expense.get().labels.containsAll([new Label("label 1"), new Label("label 2")])
-        assert expense.get().accountId == sourceAccountId
-        assert expense.get().note == "some other note"
+    void assertExpense(final Tx expense) {
+        assert expense.amount == new Money(new BigDecimal("-12.34"), Currency.EUR)
+        assert expense.date == now
+        assert expense.categoryId == transferCategoryId
+        assert expense.labels.containsAll([new Label("label 1"), new Label("label 2")])
+        assert expense.accountId == sourceAccountId
+        assert expense.note == "some other note"
     }
 
-    void assertIncome(final Optional<Tx> income) {
-        assert income
-        assert income.get().amount == new Money(new BigDecimal("12.34"), Currency.EUR)
-        assert income.get().date == now
-        assert income.get().categoryId == transferCategoryId
-        assert income.get().labels.containsAll([new Label("label 1"), new Label("label 2")])
-        assert income.get().accountId == targetAccountId
-        assert income.get().note == "some other note"
+    void assertIncome(final Tx income) {
+        assert income.amount == new Money(new BigDecimal("12.34"), Currency.EUR)
+        assert income.date == now
+        assert income.categoryId == transferCategoryId
+        assert income.labels.containsAll([new Label("label 1"), new Label("label 2")])
+        assert income.accountId == targetAccountId
+        assert income.note == "some other note"
     }
 }
