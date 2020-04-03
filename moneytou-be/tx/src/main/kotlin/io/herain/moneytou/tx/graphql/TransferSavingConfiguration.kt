@@ -17,12 +17,26 @@ class TransferSavingConfiguration(
 ) {
 
     @Bean
-    fun transferSavingMutation(): TransferSavingMutation {
-        return TransferSavingMutation(
-            currentUserIdSupplier,
-            accountCheckOperations,
+    fun databaseTransferSaver(): DatabaseTransferSaver {
+        return DatabaseTransferSaver(
             categoryFetchingOperations,
             txSavingOperations
+        )
+    }
+
+    @Bean
+    fun preconditionsCheckingTransferSaver(): PreconditionsCheckingTransferSaver {
+        return PreconditionsCheckingTransferSaver(
+            currentUserIdSupplier,
+            accountCheckOperations,
+            databaseTransferSaver()
+        )
+    }
+
+    @Bean
+    fun transferSavingMutation(): TransferSavingMutation {
+        return TransferSavingMutation(
+            preconditionsCheckingTransferSaver()
         )
     }
 }
