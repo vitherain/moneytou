@@ -1,14 +1,14 @@
-package io.herain.moneytou.tx.transaction.graphql.type
+package io.herain.moneytou.tx.graphql.input
 
 import java.time.OffsetDateTime
 import java.util.UUID
 
-data class Tx(
-    val id: UUID,
-    val amount: Money,
+data class TxInput(
+    val id: UUID?,
+    val amount: MoneyInput,
     val date: OffsetDateTime,
     val categoryId: UUID,
-    val labels: Set<Label>,
+    val labels: List<LabelInput>,
     val accountId: UUID,
     val note: String?
 )

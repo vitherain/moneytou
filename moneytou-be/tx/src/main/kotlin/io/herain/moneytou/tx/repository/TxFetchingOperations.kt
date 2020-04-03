@@ -1,6 +1,6 @@
-package io.herain.moneytou.tx.transaction.repository
+package io.herain.moneytou.tx.repository
 
-import io.herain.moneytou.tx.transaction.domain.Tx
+import io.herain.moneytou.tx.domain.Tx
 import java.util.Optional
 import java.util.UUID
 

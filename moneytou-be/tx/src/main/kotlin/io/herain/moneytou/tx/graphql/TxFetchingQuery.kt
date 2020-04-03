@@ -1,8 +1,8 @@
 package io.herain.moneytou.tx.graphql
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver
-import io.herain.moneytou.tx.transaction.graphql.type.Tx
-import io.herain.moneytou.tx.transaction.repository.TxPagingOperations
+import io.herain.moneytou.tx.graphql.type.Tx
+import io.herain.moneytou.tx.repository.TxPagingOperations
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
 

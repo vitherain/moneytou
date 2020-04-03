@@ -1,7 +1,7 @@
-package io.herain.moneytou.tx.transaction.domain
+package io.herain.moneytou.tx.domain
 
 import io.herain.moneytou.shared.domain.IdentifiedEntity
-import io.herain.moneytou.tx.transaction.graphql.type.Tx
+import io.herain.moneytou.tx.graphql.type.Tx
 import java.time.OffsetDateTime
 import java.util.UUID
 import javax.persistence.CollectionTable

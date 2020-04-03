@@ -22,7 +22,7 @@ data class Category(
     @Column(name = "id", updatable = false, nullable = false)
     override val id: UUID = UUID.randomUUID(),
     @Embedded
-    val name: CategoryName,
+    val code: CategoryCode,
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     val status: CategoryStatus = CategoryStatus.ACTIVE,
@@ -34,18 +34,22 @@ data class Category(
     val childCategories: List<Category>
 ) : IdentifiedEntity {
     @Embeddable
-    data class CategoryName(
-        @Column(name = "name", nullable = false)
-        val name: String
+    data class CategoryCode(
+        @Column(name = "code", nullable = false, unique = true)
+        val code: String
     ) {
         init {
-            if (name.length > 40) {
-                throw IllegalArgumentException("name='${name}' must be 40 characters long at most")
+            if (code.length > 255) {
+                throw IllegalArgumentException("code='${code}' is not valid")
+            }
+            if (!"^[A-Z]{1}[A-Z_0-9]*$".toRegex().matches(code)) {
+                throw IllegalArgumentException("code='${code}' is not valid")
             }
         }
     }
 
     enum class Icon(val iconCode: String) {
+        EXCHANGE_ALT("exchange-alt"),
         PIGGY_BANK("piggy-bank"),
         UNIVERSITY("university"),
         MONEY_BILL("money-bill"),
@@ -57,5 +61,9 @@ data class Category(
 
     enum class CategoryStatus {
         ACTIVE, INACTIVE
+    }
+
+    companion object {
+        const val TRANSFER_CODE = "TRANSFER"
     }
 }

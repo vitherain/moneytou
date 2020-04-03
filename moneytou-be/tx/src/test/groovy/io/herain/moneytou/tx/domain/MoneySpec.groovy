@@ -1,6 +1,7 @@
-package io.herain.moneytou.tx.transaction.domain
+package io.herain.moneytou.tx.domain
 
-
+import io.herain.moneytou.tx.domain.Currency
+import io.herain.moneytou.tx.domain.Money
 import spock.lang.Specification
 
 class MoneySpec extends Specification {

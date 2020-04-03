@@ -1,6 +1,6 @@
-package io.herain.moneytou.tx.transaction.domain
+package io.herain.moneytou.tx.domain
 
-import io.herain.moneytou.tx.transaction.graphql.type.Money
+import io.herain.moneytou.tx.graphql.type.Money
 import java.math.BigDecimal
 import javax.persistence.Column
 import javax.persistence.Embeddable

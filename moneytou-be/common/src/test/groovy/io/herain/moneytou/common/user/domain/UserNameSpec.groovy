@@ -1,6 +1,7 @@
 package io.herain.moneytou.common.user.domain
 
 import spock.lang.Specification
+import spock.lang.Unroll
 
 class UserNameSpec extends Specification {
 
@@ -13,6 +14,7 @@ class UserNameSpec extends Specification {
         e.message == "username='this_text_is_so_long_that_it_is_too_much_for_an_category_name_this_text_is_so_long_that_it_is_too_muc' must be 100 characters long at most"
     }
 
+    @Unroll("UserName can not contain whitespaces: '#input'")
     def "UserName can not contain whitespaces"() {
         when:
         new User.UserName(input)

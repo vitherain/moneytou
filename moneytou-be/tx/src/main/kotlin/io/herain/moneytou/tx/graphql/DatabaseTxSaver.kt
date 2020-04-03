@@ -1,13 +1,13 @@
 package io.herain.moneytou.tx.graphql
 
-import io.herain.moneytou.tx.transaction.domain.Label
-import io.herain.moneytou.tx.transaction.domain.Money
-import io.herain.moneytou.tx.transaction.graphql.input.TxInput
-import io.herain.moneytou.tx.transaction.graphql.type.Tx
-import io.herain.moneytou.tx.transaction.repository.TxSavingOperations
+import io.herain.moneytou.tx.domain.Label
+import io.herain.moneytou.tx.domain.Money
+import io.herain.moneytou.tx.graphql.input.TxInput
+import io.herain.moneytou.tx.graphql.type.Tx
+import io.herain.moneytou.tx.repository.TxSavingOperations
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
-import io.herain.moneytou.tx.transaction.domain.Tx as DomainTx
+import io.herain.moneytou.tx.domain.Tx as DomainTx
 
 @Transactional(propagation = Propagation.REQUIRES_NEW)
 class DatabaseTxSaver(private val savingOperations: TxSavingOperations) : TxSaver {

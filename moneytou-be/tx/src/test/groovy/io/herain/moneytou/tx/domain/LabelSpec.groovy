@@ -1,6 +1,6 @@
-package io.herain.moneytou.tx.transaction.domain
+package io.herain.moneytou.tx.domain
 
-
+import io.herain.moneytou.tx.domain.Label
 import spock.lang.Specification
 
 class LabelSpec extends Specification {
