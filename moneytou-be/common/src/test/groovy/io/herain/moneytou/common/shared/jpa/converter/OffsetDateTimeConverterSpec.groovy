@@ -1,5 +1,6 @@
-package io.herain.moneytou.common.shared.jpa
+package io.herain.moneytou.common.shared.jpa.converter
 
+import io.herain.moneytou.common.shared.jpa.converter.OffsetDateTimeConverter
 import spock.lang.Specification
 
 import java.sql.Timestamp

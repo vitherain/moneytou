@@ -1,4 +1,4 @@
-package io.herain.moneytou.common.shared.jpa
+package io.herain.moneytou.common.shared.jpa.converter
 
 import java.sql.Timestamp
 import java.time.OffsetDateTime

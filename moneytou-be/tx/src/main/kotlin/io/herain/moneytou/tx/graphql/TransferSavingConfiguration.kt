@@ -2,6 +2,7 @@ package io.herain.moneytou.tx.graphql
 
 import io.herain.moneytou.common.account.repository.AccountCheckOperations
 import io.herain.moneytou.common.category.repository.CategoryFetchingOperations
+import io.herain.moneytou.shared.jpa.support.TransactionExecutor
 import io.herain.moneytou.tx.repository.TxSavingOperations
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -10,6 +11,7 @@ import java.util.function.Supplier
 
 @Configuration
 class TransferSavingConfiguration(
+    private val transactionExecutor: TransactionExecutor,
     private val currentUserIdSupplier: Supplier<UUID>,
     private val accountCheckOperations: AccountCheckOperations,
     private val categoryFetchingOperations: CategoryFetchingOperations,
@@ -17,26 +19,26 @@ class TransferSavingConfiguration(
 ) {
 
     @Bean
-    fun databaseTransferSaver(): DatabaseTransferSaver {
-        return DatabaseTransferSaver(
-            categoryFetchingOperations,
-            txSavingOperations
+    fun transferSavingMutation(): TransferSavingMutation {
+        return TransferSavingMutation(
+            preconditionsCheckingTransferSaver()
         )
     }
 
-    @Bean
-    fun preconditionsCheckingTransferSaver(): PreconditionsCheckingTransferSaver {
+    private fun preconditionsCheckingTransferSaver(): PreconditionsCheckingTransferSaver {
         return PreconditionsCheckingTransferSaver(
+            transactionExecutor,
             currentUserIdSupplier,
             accountCheckOperations,
             databaseTransferSaver()
         )
     }
 
-    @Bean
-    fun transferSavingMutation(): TransferSavingMutation {
-        return TransferSavingMutation(
-            preconditionsCheckingTransferSaver()
+    private fun databaseTransferSaver(): DatabaseTransferSaver {
+        return DatabaseTransferSaver(
+            transactionExecutor,
+            categoryFetchingOperations,
+            txSavingOperations
         )
     }
 }

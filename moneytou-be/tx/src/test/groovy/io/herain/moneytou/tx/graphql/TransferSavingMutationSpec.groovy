@@ -3,6 +3,7 @@ package io.herain.moneytou.tx.graphql
 import io.herain.moneytou.common.account.domain.Account
 import io.herain.moneytou.common.category.domain.Category
 import io.herain.moneytou.common.shared.exception.MoneytouSecurityException
+import io.herain.moneytou.test.jpa.support.TransactionExecutorFake
 import io.herain.moneytou.tx.domain.Currency
 import io.herain.moneytou.tx.domain.Label
 import io.herain.moneytou.tx.domain.Money
@@ -71,6 +72,7 @@ class TransferSavingMutationSpec extends Specification {
         accountRepository = new InMemoryAccountRepository(existingAccounts)
         categoryRepository = new InMemoryCategoryRepository(existingCategories)
         transferSavingMutation = new TransferSavingConfiguration(
+                new TransactionExecutorFake(),
                 currentUserIdSupplier,
                 accountRepository,
                 categoryRepository,

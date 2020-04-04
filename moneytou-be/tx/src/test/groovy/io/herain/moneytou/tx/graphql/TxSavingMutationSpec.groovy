@@ -2,6 +2,7 @@ package io.herain.moneytou.tx.graphql
 
 import io.herain.moneytou.common.account.domain.Account
 import io.herain.moneytou.common.shared.exception.MoneytouSecurityException
+import io.herain.moneytou.test.jpa.support.TransactionExecutorFake
 import io.herain.moneytou.tx.domain.Currency
 import io.herain.moneytou.tx.domain.Label
 import io.herain.moneytou.tx.domain.Money
@@ -50,6 +51,7 @@ class TxSavingMutationSpec extends Specification {
         txRepository = new InMemoryTxRepository(existingTxs)
         accountRepository = new InMemoryAccountRepository(existingAccounts)
         txSavingMutation = new TxSavingConfiguration(
+                new TransactionExecutorFake(),
                 currentUserIdSupplier,
                 accountRepository,
                 txRepository
