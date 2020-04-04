@@ -73,10 +73,13 @@ class TransferSavingMutationSpec extends Specification {
         categoryRepository = new InMemoryCategoryRepository(existingCategories)
         transferSavingMutation = new TransferSavingConfiguration(
                 new TransactionExecutorFake(),
-                currentUserIdSupplier,
-                accountRepository,
                 categoryRepository,
-                txRepository
+                new TxSavingConfiguration(
+                        new TransactionExecutorFake(),
+                        currentUserIdSupplier,
+                        accountRepository,
+                        txRepository
+                ).txSavingMutation()
         ).transferSavingMutation()
     }
 
@@ -107,7 +110,7 @@ class TransferSavingMutationSpec extends Specification {
         then:
         def e = thrown(MoneytouSecurityException)
         e.message == "Account with ID=${input.sourceAccountId} does not belong to the current user"
-        txRepository.count() == 2
+        txRepository.count() != 4
     }
 
     def "exception is thrown when target account does not belong to the current user"() {
@@ -121,7 +124,7 @@ class TransferSavingMutationSpec extends Specification {
         then:
         def e = thrown(MoneytouSecurityException)
         e.message == "Account with ID=${input.targetAccountId} does not belong to the current user"
-        txRepository.count() == 2
+        txRepository.count() != 4
     }
 
     void assertExpense(final Tx expense) {

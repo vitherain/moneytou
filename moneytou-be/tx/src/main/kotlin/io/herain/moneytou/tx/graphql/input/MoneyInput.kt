@@ -6,4 +6,8 @@ import java.math.BigDecimal
 data class MoneyInput(
     val value: BigDecimal,
     val currency: Currency
-)
+) {
+    fun negated(): MoneyInput {
+        return MoneyInput(value.negate(), currency)
+    }
+}
