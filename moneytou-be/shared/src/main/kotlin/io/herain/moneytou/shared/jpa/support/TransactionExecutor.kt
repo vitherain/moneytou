@@ -31,27 +31,27 @@ interface TransactionExecutor {
     fun executeReadonly(runnable: () -> Unit, propagation: Propagation)
 
     /**
-     * Given lambda is executed in read-only transaction
+     * Given lambda is executed in transaction
      * with [org.springframework.transaction.annotation.Propagation.REQUIRED]
      * propagation behavior.
      */
     fun <T> execute(supplier: () -> T): T
 
     /**
-     * Given lambda is executed in read-only transaction
+     * Given lambda is executed in transaction
      * with the specified propagation behavior.
      */
     fun <T> execute(supplier: () -> T, propagation: Propagation): T
 
     /**
-     * Given lambda is executed in read-only transaction
+     * Given lambda is executed in transaction
      * with [org.springframework.transaction.annotation.Propagation.REQUIRED]
      * propagation behavior.
      */
     fun execute(runnable: () -> Unit)
 
     /**
-     * Given lambda is executed in read-only transaction
+     * Given lambda is executed in transaction
      * with the specified propagation behavior.
      */
     fun execute(runnable: () -> Unit, propagation: Propagation)

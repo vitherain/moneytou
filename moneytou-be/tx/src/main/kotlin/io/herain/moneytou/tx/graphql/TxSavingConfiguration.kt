@@ -23,16 +23,21 @@ class TxSavingConfiguration(
 
     private fun preconditionsCheckingTxSaver(): PreconditionsCheckingTxSaver {
         return PreconditionsCheckingTxSaver(
-            transactionExecutor,
             currentUserIdSupplier,
             accountCheckOperations,
+            databaseTransactionHandlingTxSaver()
+        )
+    }
+
+    private fun databaseTransactionHandlingTxSaver(): DatabaseTransactionHandlingTxSaver {
+        return DatabaseTransactionHandlingTxSaver(
+            transactionExecutor,
             databaseTxSaver()
         )
     }
 
     private fun databaseTxSaver(): DatabaseTxSaver {
         return DatabaseTxSaver(
-            transactionExecutor,
             txSavingOperations
         )
     }

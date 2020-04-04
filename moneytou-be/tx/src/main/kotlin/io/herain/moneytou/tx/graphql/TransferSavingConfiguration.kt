@@ -27,16 +27,21 @@ class TransferSavingConfiguration(
 
     private fun preconditionsCheckingTransferSaver(): PreconditionsCheckingTransferSaver {
         return PreconditionsCheckingTransferSaver(
-            transactionExecutor,
             currentUserIdSupplier,
             accountCheckOperations,
+            databaseTransactionHandlingTransferSaver()
+        )
+    }
+
+    private fun databaseTransactionHandlingTransferSaver(): DatabaseTransactionHandlingTransferSaver {
+        return DatabaseTransactionHandlingTransferSaver(
+            transactionExecutor,
             databaseTransferSaver()
         )
     }
 
     private fun databaseTransferSaver(): DatabaseTransferSaver {
         return DatabaseTransferSaver(
-            transactionExecutor,
             categoryFetchingOperations,
             txSavingOperations
         )
