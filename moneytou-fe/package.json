@@ -12,14 +12,14 @@
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-redux": "^7.1.3",
+    "react-relay": "^9.0.0",
     "react-scripts": "3.4.1",
-    "redux": "^4.0.5",
-    "redux-saga": "^1.1.3"
+    "relay-runtime": "^9.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "relay": "relay-compiler --src ./src/ --schema ./src/schema.graphql --extensions js jsx",
     "test": "react-scripts test",
     "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "eject": "react-scripts eject"
@@ -38,5 +38,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "babel-plugin-relay": "^9.0.0",
+    "customize-cra": "^0.9.1",
+    "graphql": "^15.0.0",
+    "react-app-rewired": "^2.1.5",
+    "relay-compiler": "^9.0.0"
   }
 }
